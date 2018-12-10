@@ -1,0 +1,44 @@
+# csv_to_postgres
+The repo has
+1--> task.py
+2--> csv_to_postgres.doc
+3--> csv_to_postgres_airflow.py
+4--> csv_to_postgres_airflow.doc
+5--> guide.doc
+
+================
+   guide.doc
+================
+The document has the example of copy command in postgres and copy command in python script
+
+
+==================================
+   task.py anf csv_to_postgres.doc
+==================================
+The csv_to_postgres.doc has the details of the problem statement and solution
+task.py is the code
+
+===================================================================
+   csv_to_postgres_airflow.py and   csv_to_postgres_airflow.doc
+===================================================================
+  csv_to_postgres_airflow.doc has the details of problem statement and solution
+  csv_to_postgres_airflow.py has the python script
+    
+  Steps to run the airflow
+  1) airflow initdb
+  2)airflow webserver -p 8080
+  3)sudo chmod -R udo+rw /home/baadmin/airflow_ishi/dags/input
+  4) airflow test 1-FileToDb csvfile1 2018-12-09 =========# creates "file1.csv" under /home/baadmin/airflow_ishi/dags/input
+  5) airflow test 1-FileToDb csvfile2 2018-12-09 =========# creates "file2.csv" under /home/baadmin/airflow_ishi/dags/input
+  6) airflow test 1-FileToDb connectdb1 2018-12-09 =======# connects postgresql and copies "file1.csv" to "csvtable1"
+  7) airflow test 1-FileToDb connectdb2 2018-12-09========# connects postgresql and copies "file2.csv" to "csvtable2"
+  8) airflow test 1-FileToDb removecsv 2018-12-09=========# removes "file1.csv" and "file2.csv" in /home/baadmin/airflow_ishi/dags/input
+  9) airflow test 1-FileToDb merge 2018-12-09=============# copies the "mergetable" from postgres to "merege.csv" in /home/baadmin/airflow_ishi/dags/input/
+
+
+
+
+
+
+
+
